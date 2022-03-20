@@ -10,6 +10,8 @@
 */
 
 
+
+
 const startGiffyGram = () => {
     const postElement = document.querySelector(".postList");
 	postElement.innerHTML = "Hello Cohort 47"
