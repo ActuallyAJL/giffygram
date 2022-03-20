@@ -1,0 +1,49 @@
+{
+  "users": [
+    {
+      "name": "Bryan",
+      "email": "bryan@bn.com",
+      "id": 1
+    },
+    {
+      "name": "Alex Levy",
+      "email": "alex.j.levy@me.com",
+      "id": 2
+    }
+  ],
+  "posts": [
+    {
+      "title": "Yessssss",
+      "description": "Nicholas Cage or soemthign",
+      "imageURL": "https://media.giphy.com/media/10Jpr9KSaXLchW/giphy-downsized-large.gif",
+      "timestamp": "1647808901",
+      "userID": 2,
+      "id": 1
+    },
+    {
+      "title": "Happy Birthday",
+      "description": "That zonmbie from that one movie",
+      "imageURL": "https://media.giphy.com/media/Qvns6NmhC1MBLKGbL1/giphy.gif",
+      "timestamp": "1647809044",
+      "userID": 2,
+      "id": 2
+    },
+    {
+      "title": "Proud of You!",
+      "description": "Believe it or not, this is actually Robert Redford",
+      "imageURL": "https://media.giphy.com/media/NEvPzZ8bd1V4Y/giphy.gif",
+      "timestamp": "1647809177",
+      "userID": 2,
+      "id": 3
+    },
+    {
+      "title": "OOOOOOOO!",
+      "description": "Obligatory Elden Ring GIF",
+      "imageURL": "https://media.giphy.com/media/ECvlptev6UZCGeSikQ/giphy.gif",
+      "timestamp": "1647809266",
+      "userID": 2,
+      "id": 4
+    }
+  ],
+  "messages": []
+}
