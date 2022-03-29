@@ -13,11 +13,11 @@
   ],
   "posts": [
     {
-      "title": "Yessssss",
-      "description": "Nicholas Cage or soemthign",
-      "imageURL": "https://media.giphy.com/media/10Jpr9KSaXLchW/giphy-downsized-large.gif",
-      "timestamp": "1647808901",
-      "userID": 2,
+      "title": "mmmm",
+      "imageURL": "https://media.giphy.com/media/3ov9jMPImqtoX310Ig/giphy.gif",
+      "description": "covfefe!!!",
+      "userId": 2,
+      "timestamp": 1647808901,
       "id": 1
     },
     {
@@ -35,6 +35,14 @@
       "timestamp": "1647809177",
       "userID": 2,
       "id": 3
+    },
+    {
+      "title": "coffee",
+      "imageURL": "https://media.giphy.com/media/26mkhIj7fJHjq0JMI/giphy.gif",
+      "description": "covfefe",
+      "userId": 1,
+      "timestamp": 1648517034881,
+      "id": 4
     }
   ],
   "messages": []

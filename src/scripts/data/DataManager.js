@@ -9,11 +9,12 @@ export const getUsers = () => {
     });
 };
 
-const loggedInUser = {
-  id: 2,
-  name: "Alex Levy",
-  email: "alex.j.levy@me.com",
-};
+//change declaration to let
+let loggedInUser = {};
+
+export const logoutUser = () => {
+  loggedInUser = {}
+}
 
 export const getLoggedInUser = () => {
   return loggedInUser;
@@ -54,3 +55,25 @@ export const deletePost = (postId) => {
     },
   }).then((response) => response.json());
 };
+
+export const getSinglePost = (postId) => {
+  return fetch(`http://localhost:8088/posts/${postId}`)
+    .then(response => response.json())
+}
+
+export const updatePost = postObj => {
+  return fetch(`http://localhost:8088/posts/${postObj.id}`, {
+      method: "PUT",
+      headers: {
+          "Content-Type": "application/json"
+      },
+      body: JSON.stringify(postObj)
+
+  })
+      .then(response => response.json())
+      
+}
+
+export const setLoggedInUser = (userObj) => {
+  loggedInUser = userObj;
+}

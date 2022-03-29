@@ -2,8 +2,16 @@
 import { PostList } from "./feed/PostList.js";
 import { NavBar } from "./nav/NavBar.js";
 import { Footer } from "./nav/Footer.js";
-import { usePostCollection, createPost, getPosts, getUsers, deletePost } from "./data/DataManager.js";
+import {
+  usePostCollection,
+  createPost,
+  getPosts,
+  getUsers, getLoggedInUser,
+  deletePost,
+  getSinglePost, updatePost, setLoggedInUser
+} from "./data/DataManager.js";
 import { PostEntry } from "./feed/PostEntry.js";
+import { PostEdit } from "./feed/PostEdit.js";
 
 const showPostList = () => {
   //Get a reference to the location on the DOM where the list will display
@@ -31,13 +39,12 @@ const startGiffyGram = () => {
   showFooter();
 };
 
-startGiffyGram();
-
 const applicationElement = document.querySelector(".giffygram");
 
 applicationElement.addEventListener("click", (event) => {
   if (event.target.id === "logout") {
-    console.log("You clicked on logout");
+    logoutUser();
+    console.log(getLoggedInUser());
   } else if (event.target.id === "home__button") {
     alert("Home Button Pressed");
   } else if (event.target.id.startsWith("edit")) {
@@ -100,8 +107,40 @@ applicationElement.addEventListener("click", (event) => {
     deletePost(postId).then((response) => {
       showPostList();
     });
+  } else if (event.target.id.startsWith("edit")) {
+    const postId = event.target.id.split("__")[1];
+    getSinglePost(postId).then((response) => {
+      showEdit(response);
+    });
+  } else if (event.target.id.startsWith("updatePost")) {
+    const postId = event.target.id.split("__")[1];
+    //collect all the details into an object
+    const title = document.querySelector("input[name='postTitle']").value;
+    const url = document.querySelector("input[name='postURL']").value;
+    const description = document.querySelector(
+      "textarea[name='postDescription']"
+    ).value;
+    const timestamp = document.querySelector("input[name='postTime']").value;
+
+    const postObject = {
+      title: title,
+      imageURL: url,
+      description: description,
+      userId: getLoggedInUser().id,
+      timestamp: parseInt(timestamp),
+      id: parseInt(postId),
+    };
+
+    updatePost(postObject).then((response) => {
+      showPostList();
+    });
   }
 });
+
+const showEdit = (postObj) => {
+  const entryElement = document.querySelector(".entryForm");
+  entryElement.innerHTML = PostEdit(postObj);
+};
 
 const showPostEntry = () => {
   //Get a reference to the location on the DOM where the nav will display
@@ -109,4 +148,16 @@ const showPostEntry = () => {
   entryElement.innerHTML = PostEntry();
 };
 
-showPostEntry();
+const checkForUser = () => {
+  if (sessionStorage.getItem("user")){
+    setLoggedInUser(JSON.parse(sessionStorage.getItem("user")));
+    startGiffyGram();
+    showPostEntry();
+  }else {
+    //show login/register
+    console.log("showLogin")
+  }
+}
+
+// showPostEntry();
+checkForUser();
