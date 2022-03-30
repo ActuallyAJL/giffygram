@@ -68,3 +68,7 @@
     cursor: pointer;
 }
 
+#showMyPosts, #showAllPosts {
+    margin-left: 2px;
+    padding: 1px;
+}
